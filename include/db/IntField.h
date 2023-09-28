@@ -29,6 +29,7 @@ namespace db {
         std::string to_string() const override {
             return std::to_string(value);
         }
+        std::unique_ptr<Field> copy()const override;
     };
 }
 

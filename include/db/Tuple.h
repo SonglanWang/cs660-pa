@@ -13,7 +13,14 @@ namespace db {
      */
     class Tuple {
         // TODO pa1.1: add private members
-        using iterator = std::vector<Field*>::iterator; // replace this with a container iterator or a custom iterator implementation
+//<<<<<<< Updated upstream
+//        using iterator = std::vector<Field*>::iterator; // replace this with a container iterator or a custom iterator implementation
+//=======
+        TupleDesc tupleDesc;
+        std::vector<std::unique_ptr<Field>> fields;
+        std::unique_ptr<RecordId> recordId;
+        using iterator = std::vector<std::unique_ptr<Field>>::const_iterator; // replace void* with a container iterator or a custom iterator implementation
+//>>>>>>> Stashed changes
     public:
         Tuple() = default;
 

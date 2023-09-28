@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <utility>
 #include <vector>
+#include <functional>
 
 namespace db {
     /**
@@ -36,8 +37,15 @@ namespace db {
      * TupleDesc describes the schema of a tuple.
      */
     class TupleDesc {
+
         // TODO pa1.1: add private members
-        using iterator = std::vector<TDItem>::iterator; // replace this with a container iterator or a custom iterator implementation
+//<<<<<<< Updated upstream
+//        using iterator = std::vector<TDItem>::iterator; // replace this with a container iterator or a custom iterator implementation
+//=======
+
+        using iterator = std::vector<TDItem>::const_iterator; // replace void* with a container iterator or a custom iterator implementation
+        std::vector<TDItem> Items;
+//>>>>>>> Stashed changes
     public:
         TupleDesc() {}
 
@@ -139,6 +147,10 @@ namespace db {
         iterator begin() const;
 
         iterator end() const;
+
+        const std::vector<TDItem>& getItems() const { return Items; }
+
+
     };
 }
 

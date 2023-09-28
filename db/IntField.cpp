@@ -30,3 +30,7 @@ Field *IntField::parse(void *data) {
     memcpy(&value, data, sizeof(int));
     return new IntField(value);
 }
+
+std::unique_ptr<Field> IntField::copy() const {
+    return std::make_unique<IntField>(*this);
+}

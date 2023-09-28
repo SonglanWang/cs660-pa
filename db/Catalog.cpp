@@ -6,6 +6,12 @@ using namespace db;
 
 void Catalog::addTable(DbFile *file, const std::string &name, const std::string &pkeyField) {
     // TODO pa1.2: implement
+    int id=file->getId();
+    Table newTable(file, name, pkeyField);
+    idTable[id]=newTable;
+    nameId[name]=id;
+
+
 }
 
 int Catalog::getTableId(const std::string &name) const {

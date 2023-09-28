@@ -37,3 +37,7 @@ Field *StringField::parse(void *data) {
     memcpy(value, ptr + sizeof(int), len);
     return new StringField(value);
 }
+
+    std::unique_ptr<Field> StringField::copy() const {
+        return std::make_unique<StringField>(*this);
+}
