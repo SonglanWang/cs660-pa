@@ -9,12 +9,16 @@
 #include <db/HeapPage.h>
 
 namespace db {
-    class HeapPage;
+    class HeapFile;
     class HeapFileIterator {
         // TODO pa1.5: add private members
+        const HeapFile* currentFile;
+        int currentPageIndex;
+        int currentTupleIndex;
+        Tuple currentTuple;
 
     public:
-        HeapFileIterator(/* TODO pa1.5: add parameters */);
+        HeapFileIterator(const HeapFile* file) ;
         bool operator!=(const HeapFileIterator &other) const;
 
         Tuple &operator*() const;
@@ -34,8 +38,8 @@ namespace db {
      */
     class HeapFile : public DbFile {
         // TODO pa1.5: add private members
-        std::string filename;    // 文件的名字或路径
-        TupleDesc tupleDesc;     // 元组描述符
+        std::string filename;
+        TupleDesc tupleDesc;
         int tableId;
     public:
 

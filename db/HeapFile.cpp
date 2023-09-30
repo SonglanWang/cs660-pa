@@ -46,11 +46,16 @@ HeapFileIterator HeapFile::end() const {
 //
 
 // TODO pa1.5: implement
-HeapFileIterator::HeapFileIterator(/* TODO pa1.5: add parameters */) {
+HeapFileIterator::HeapFileIterator(const HeapFile* file): currentFile(file), currentPageIndex(0), currentTupleIndex(0){
+
 }
+
 
 bool HeapFileIterator::operator!=(const HeapFileIterator &other) const {
     // TODO pa1.5: implement
+    return this->currentFile != other.currentFile ||
+           this->currentPageIndex != other.currentPageIndex ||
+           this->currentTupleIndex != other.currentTupleIndex;
 }
 
 Tuple &HeapFileIterator::operator*() const {
