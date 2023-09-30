@@ -12,6 +12,7 @@
 #include <db/TransactionId.h>
 #include <db/Page.h>
 #include <db/Tuple.h>
+#include <db/HeapPage.h>
 
 /**
  * BufferPool manages the reading and writing of pages into memory from
@@ -29,6 +30,10 @@ namespace db {
         /** Bytes per page, including header. */
         int pageSize = PAGE_SIZE;
         // TODO pa1.3: add private members
+        std::unordered_map<PageId*,std::unique_ptr<HeapPage>> page;
+        //std::list<PageId*> pagesOrder;
+        int capacity;
+
     public:
         BufferPool(const BufferPool &) = delete;
 

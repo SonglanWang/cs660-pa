@@ -11,7 +11,7 @@ namespace db {
         DbFile *file;
         std::string name;
         std::string pkeyField;
-
+        Table(){};
         Table(DbFile *file, const std::string &name, const std::string &pkeyField) : file(file), name(name), pkeyField(pkeyField) {}
     };
 

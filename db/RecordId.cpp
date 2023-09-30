@@ -8,19 +8,24 @@ using namespace db;
 //
 
 // TODO pa1.4: implement
-RecordId::RecordId(const PageId *pid, int tupleno) {
+RecordId::RecordId(const PageId *pid, int tupleno) :Pid(pid),tupleNo(tupleno){
+
 }
 
 bool RecordId::operator==(const RecordId &other) const {
     // TODO pa1.4: implement
+    return (*Pid == *(other.Pid)) && (tupleNo == other.tupleNo);
+
 }
 
 const PageId *RecordId::getPageId() const {
     // TODO pa1.4: implement
+    return Pid;
 }
 
 int RecordId::getTupleno() const {
     // TODO pa1.4: implement
+    return tupleNo;
 }
 
 //
