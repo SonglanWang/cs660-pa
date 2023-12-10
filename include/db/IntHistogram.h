@@ -3,6 +3,9 @@
 
 #include <db/Histogram.h>
 #include <db/Predicate.h>
+#include <vector>
+#include <string>
+#include <algorithm>
 
 namespace db {
 
@@ -11,6 +14,16 @@ namespace db {
      */
     class IntHistogram : public Histogram {
         // TODO pa4.1: add private members
+        std::vector<int> bins;
+        int min, max;
+        int ntups;
+        double avgSelectivityValue;
+        int getBucketIndex(int value) const {
+            double bucketRange = static_cast<double>(max - min) / bins.size();
+            int bucketIndex = static_cast<int>((value - min) / bucketRange);
+            bucketIndex = std::min(std::max(bucketIndex, 0), static_cast<int>(bins.size()) - 1);
+            return bucketIndex;
+        }
     public:
         /**
          * Create a new IntHistogram.
